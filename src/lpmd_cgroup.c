@@ -126,7 +126,7 @@ static int restore_systemd_cgroup(void)
 	update_allowed_cpus ("user.slice", vals, size);
 	update_allowed_cpus ("machine.slice", vals, size);
 	update_allowed_cpus ("qemu.slice", vals, size);
-	update_allowed_cpus ("lxc", vals, size);
+	update_allowed_cpus ("lxc.service", vals, size);
 
 	return 0;
 }
@@ -157,7 +157,7 @@ static int update_systemd_cgroup(lpmd_config_state_t *state)
 	if (ret)
 		goto restore;
 
-	ret = update_allowed_cpus ("lxc", vals, size);
+	ret = update_allowed_cpus ("lxc.service", vals, size);
 	if (ret)
 		goto restore;
 	
